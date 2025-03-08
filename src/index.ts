@@ -36,8 +36,8 @@ if (process.env.NODE_ENV === 'development') {
         }),
     });
 } else {
-    const privateKey = fs.readFileSync('privkey.pem', 'utf-8');
-    const certificate = fs.readFileSync('fullchain.pem', 'utf-8');
+    const privateKey = process.env.PRIVATE_KEY;
+    const certificate = process.env.FULL_CHAIN;
     const credentials = { key: privateKey, cert: certificate };
 
     app.use(cors({ origin: process.env.ALLOWED_ORIGINS || '*' }));
